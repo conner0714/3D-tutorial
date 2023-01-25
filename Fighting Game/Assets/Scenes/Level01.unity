@@ -1489,6 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b921c71da33934289398ff453b94cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPosition: {fileID: 0}
 --- !u!4 &1353740292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3618168384978403742, guid: 94de736619fdc4945baa1fd036c227fc, type: 3}
@@ -2527,11 +2528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7749385054576956046, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7749385054576956046, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
