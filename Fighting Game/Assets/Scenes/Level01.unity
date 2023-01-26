@@ -436,7 +436,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c55c8078b0518941bf0c133053a1332, type: 2}
+  - {fileID: 2100000, guid: fc0baa0671e9e0c469512f1b17a4d010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -561,7 +561,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c55c8078b0518941bf0c133053a1332, type: 2}
+  - {fileID: 2100000, guid: fbd812fdad8d9ca4da668a743340a380, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1358,7 +1358,7 @@ PrefabInstance:
     - target: {fileID: 2224335181242362919, guid: 873975b59d9b78843a1e22d8e11a5b72, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2c55c8078b0518941bf0c133053a1332, type: 2}
+      objectReference: {fileID: 2100000, guid: 2f88da22ccbbda643bba898539759872, type: 2}
     - target: {fileID: 2224335181242362938, guid: 873975b59d9b78843a1e22d8e11a5b72, type: 3}
       propertyPath: m_Name
       value: Stepping Stone (1)
@@ -1442,7 +1442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c55c8078b0518941bf0c133053a1332, type: 2}
+  - {fileID: 2100000, guid: e4d4e7fb5f9f74f46a6165d97e9bf24f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1472,24 +1472,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296403528}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1343655991 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7749385054018765545, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
-  m_PrefabInstance: {fileID: 7749385054713524120}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1343655995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343655991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b921c71da33934289398ff453b94cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 0}
 --- !u!4 &1353740292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3618168384978403742, guid: 94de736619fdc4945baa1fd036c227fc, type: 3}
@@ -2145,7 +2127,7 @@ PrefabInstance:
     - target: {fileID: 2224335181242362919, guid: 873975b59d9b78843a1e22d8e11a5b72, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2c55c8078b0518941bf0c133053a1332, type: 2}
+      objectReference: {fileID: 2100000, guid: 2f88da22ccbbda643bba898539759872, type: 2}
     - target: {fileID: 2224335181242362938, guid: 873975b59d9b78843a1e22d8e11a5b72, type: 3}
       propertyPath: m_Name
       value: Stepping Stone (2)
@@ -2297,7 +2279,7 @@ PrefabInstance:
     - target: {fileID: 2224335181242362919, guid: 873975b59d9b78843a1e22d8e11a5b72, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2c55c8078b0518941bf0c133053a1332, type: 2}
+      objectReference: {fileID: 2100000, guid: 2f88da22ccbbda643bba898539759872, type: 2}
     - target: {fileID: 2224335181242362938, guid: 873975b59d9b78843a1e22d8e11a5b72, type: 3}
       propertyPath: m_Name
       value: Stepping Stone
@@ -2482,6 +2464,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7749385054576956043, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749385054576956043, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a75146df052d2154e958bcb2b6647a36, type: 2}
     - target: {fileID: 7749385054576956045, guid: fbdfae9ab508e5345bbd39c30f31eb62, type: 3}
       propertyPath: m_RootOrder
       value: 1
