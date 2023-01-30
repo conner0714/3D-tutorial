@@ -26,7 +26,7 @@ public class PlayerLife : MonoBehaviour
     void Die()
     {
         death.Play();
-        gameObject.GetComponent<Renderer>().material.color = new Color(169, 169, 169);
+        gameObject.GetComponent<MeshRenderer>().material.color = new Color(169, 169, 169);
         Invoke(nameof(ReloadLevel), 1.3f);
         dead = true;
         

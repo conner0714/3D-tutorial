@@ -7,8 +7,14 @@ public class ItemCollector : MonoBehaviour
 {
     int coins = 0;
     
+    FirstPersonMovement firstPersonMovement;
+
     [SerializeField] Text coinsText; 
     [SerializeField] AudioSource collectCoin;
+    private void Start ()
+    {
+        firstPersonMovement = GetComponent<FirstPersonMovement>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +24,11 @@ public class ItemCollector : MonoBehaviour
             collectCoin.Play();
             coins++;
             coinsText.text = "Coins: " + coins;
+        }
+        if (other.gameObject.CompareTag("Speed Boost"))
+        {
+            Destroy(other.gameObject);
+            firstPersonMovement.moveSpeed = 10f;
         }
     }
 }

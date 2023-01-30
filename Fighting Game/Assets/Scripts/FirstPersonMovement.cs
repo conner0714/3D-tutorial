@@ -12,7 +12,7 @@ public class FirstPersonMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    bool readyToJump;
+    bool readyToJump = true;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -21,6 +21,9 @@ public class FirstPersonMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask ground;
+    [SerializeField] AudioSource jumpSound;
 
     public Transform orientation;
 
@@ -56,14 +59,22 @@ public class FirstPersonMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
+        
+        if(Input.GetKey(jumpKey) && readyToJump && IsGrounded())
+        {
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    /*
         if(Input.GetKey(jumpKey) && readyToJump && grounded){
             readyToJump = false;
 
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
-        }
+      }
+      */
     }
 
     private void MovePlayer()
@@ -89,15 +100,23 @@ public class FirstPersonMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    void Jump()
     {
-        //reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+         jumpSound.Play();
     }
+
+    bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, .1f, ground);
+    }
+
+
     private void ResetJump()
     {
         readyToJump = true;
     }
+    
 }

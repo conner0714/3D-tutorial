@@ -7,6 +7,9 @@ TagManager:
   - Enemy Body
   - Enemy Head
   - Coin
+  - Speed Boost
+  - Jump Boost
+  - Gravity
   layers:
   - Default
   - TransparentFX
