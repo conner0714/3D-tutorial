@@ -11,6 +11,8 @@ public class ItemCollector : MonoBehaviour
 
     [SerializeField] Text coinsText; 
     [SerializeField] AudioSource collectCoin;
+    [SerializeField] AudioSource collectSpeed;
+    [SerializeField] AudioSource collectJump;
     private void Start ()
     {
         firstPersonMovement = GetComponent<FirstPersonMovement>();
@@ -29,6 +31,18 @@ public class ItemCollector : MonoBehaviour
         {
             Destroy(other.gameObject);
             firstPersonMovement.moveSpeed = 10f;
+        }
+        if (other.gameObject.CompareTag("Jump Boost"))
+        {
+            Destroy(other.gameObject);
+            firstPersonMovement.jumpForce = 15f;
+            collectSpeed.Play();
+        }
+        if (other.gameObject.CompareTag("Speed Boost"))
+        {
+            Destroy(other.gameObject);
+            firstPersonMovement.moveSpeed = 10f;
+            collectJump.Play();
         }
     }
 }

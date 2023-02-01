@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy Head"))
         {
-            Destroy(collision.transform.parent.gameObject);
+            gameObject.TakeDamage(50);
             Jump();
         }
     }
