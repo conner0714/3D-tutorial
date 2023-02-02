@@ -118,5 +118,14 @@ public class FirstPersonMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+
+     private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Enemy Head"))
+        {
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
+            Jump();
+        }
+    }
     
 }

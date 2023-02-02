@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
         HP -= damageAmount;
         if(HP <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
             //Play Death Animation
         } 
         else 
