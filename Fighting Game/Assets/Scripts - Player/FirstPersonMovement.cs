@@ -45,9 +45,15 @@ public class FirstPersonMovement : MonoBehaviour
         MyInput();
         // handle drag
         if(grounded)
+        {
             rb.drag = groundDrag;
+            airMultiplier = 0.05f;
+        }
         else 
+        {
             rb.drag = 0;
+            airMultiplier = 0.2f; 
+        }
     }
 
     private void FixedUpdate()
