@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField]
-    private Text firePowertext;
 
     [SerializeField]
     private Weapon weapon;
@@ -15,6 +13,9 @@ public class WeaponController : MonoBehaviour
 
     [SerializeField]
     private float maxFirePower;
+
+    [SerializeField]
+    private float firePowerSpeed;
 
     private float firePower;
 
@@ -44,6 +45,23 @@ public class WeaponController : MonoBehaviour
     {
         mouseY -= Input.GetAxis("Mouse Y") * rotateSpeed;
         mouseY = Mathf.Clamp(mouseY, minRotation, maxRotation);
-        //weapon.transform.localRotation = 
+        //weapon.transform.localRotation = Quaternion.Euler(mouseY, weapon.transform.localEulerAngles.y, weapon.transform.localEulerAngles.z);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            fire = true;
+        }
+
+        if (fire && firePower < maxFirePower)
+        {
+            firePower += Time.deltaTime * firePowerSpeed;
+        }
+
+        if (fire && Input.GetMouseButtonUp(0))
+        {
+            weapon.fire(firePower);
+            firePower = 0;
+            fire = false;
+        }
     }
 }

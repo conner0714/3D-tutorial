@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private Transform spawnPoint;
 
+    public Transform Orientation;
+
     private Arrow currentArrow;
 
     private string enemyTag;
@@ -37,7 +39,7 @@ public class Weapon : MonoBehaviour
         isReloading = false;
     }
 
-    private void fire(float firePower)
+    public void fire(float firePower)
     {
         if(isReloading || currentArrow == null) return;
         var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
@@ -45,6 +47,7 @@ public class Weapon : MonoBehaviour
         currentArrow = null;
         Reload();
     }
+
 
     public bool IsReady()
     {

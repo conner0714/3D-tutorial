@@ -27,15 +27,15 @@ public class Arrow : MonoBehaviour
         rigidbody.AddForce(force, ForceMode.Impulse);
         rigidbody.AddTorque(transform.right * torque);
         transform.SetParent(null);
-
-        void OnTriggerEnter(Collider collider)
+    }
+    void OnTriggerEnter(Collider collider)
         {
             if(didHit) return;
             didHit = true;
 
             if (collider.CompareTag(enemyTag))
             {
-                collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
+                collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             }
 
             rigidbody.velocity = Vector3.zero;
@@ -43,5 +43,4 @@ public class Arrow : MonoBehaviour
             rigidbody.isKinematic = true;
             transform.SetParent(collider.transform);
         }
-    }
 } 

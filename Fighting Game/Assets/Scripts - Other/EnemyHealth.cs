@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private int HP = 100;
+    private float HP = 100;
     public Slider healthBar; 
 
     void Update(){
         healthBar.value = HP;
     }
     
-    public void TakeDamage(int damageAmount){
+    public void TakeDamage(float damageAmount){
         HP -= damageAmount;
         if(HP <= 0)
         {

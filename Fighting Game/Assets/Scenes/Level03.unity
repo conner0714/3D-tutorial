@@ -1166,7 +1166,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359383807}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.568, z: 9.462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1791,6 +1791,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b221100994662442b1d212e59a4de74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 2106959445}
+  enemyTag: Enemy Head
+  maxFirePower: 50
+  firePowerSpeed: 15
+  rotateSpeed: 5
+  minRotation: -50
+  maxRotation: 50
 --- !u!1 &1380726681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,7 +2241,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106959443}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2592928, y: 1.1204253, z: -0.99288464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2261,6 +2268,7 @@ MonoBehaviour:
   reloadTime: 1
   arrowPrefab: {fileID: 346828193}
   spawnPoint: {fileID: 1744801241}
+  Orientation: {fileID: 261377973}
 --- !u!4 &1274522104545439595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7349221420283748277, guid: 592f36f59d00106459879e3263bd52af, type: 3}
