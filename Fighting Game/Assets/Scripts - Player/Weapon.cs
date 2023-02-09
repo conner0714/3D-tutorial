@@ -10,13 +10,17 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private Transform spawnPoint;
 
-    public Transform Orientation;
+    [SerializeField] private AudioSource arrowShot;
+
+    public Transform orientation;
 
     private Arrow currentArrow;
 
     private string enemyTag;
 
     private bool isReloading;
+
+    private Vector3 fireRotation;
 
     public void SetEnemyTag(string enemyTag)
     {
@@ -42,7 +46,9 @@ public class Weapon : MonoBehaviour
     public void fire(float firePower)
     {
         if(isReloading || currentArrow == null) return;
-        var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
+        fireRotation = new Vector3(0.01f * orientation.rotation.eulerAngles.x, 0.01f * orientation.rotation.eulerAngles.y, 0.001f * orientation.rotation.eulerAngles.z);
+        var force = spawnPoint.TransformDirection(fireRotation * firePower);
+        arrowShot.Play();
         currentArrow.Fly(force);
         currentArrow = null;
         Reload();

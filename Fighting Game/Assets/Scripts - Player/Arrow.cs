@@ -33,6 +33,8 @@ public class Arrow : MonoBehaviour
             if(didHit) return;
             didHit = true;
 
+            if(enemyTag == null) return;
+
             if (collider.CompareTag(enemyTag))
             {
                 collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
