@@ -52,7 +52,7 @@ public class FirstPersonMovement : MonoBehaviour
         else 
         {
             rb.drag = 0;
-            airMultiplier = 0.2f; 
+            airMultiplier = 0.1f; 
         }
     }
 

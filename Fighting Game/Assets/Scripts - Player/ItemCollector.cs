@@ -35,13 +35,13 @@ public class ItemCollector : MonoBehaviour
         if (other.gameObject.CompareTag("Jump Boost"))
         {
             Destroy(other.gameObject);
-            firstPersonMovement.jumpForce = 15f;
+            firstPersonMovement.jumpForce = 10f;
             collectSpeed.Play();
         }
         if (other.gameObject.CompareTag("Speed Boost"))
         {
             Destroy(other.gameObject);
-            firstPersonMovement.moveSpeed = 10f;
+            firstPersonMovement.moveSpeed = 5f;
             collectJump.Play();
         }
     }
