@@ -20,6 +20,12 @@ public class Weapon : MonoBehaviour
 
     private bool isReloading;
 
+    private float xRotation;
+
+    private float yRotation;
+
+    private float zRotation;
+
     private Vector3 fireRotation;
 
     public void SetEnemyTag(string enemyTag)
@@ -46,7 +52,25 @@ public class Weapon : MonoBehaviour
     public void fire(float firePower)
     {
         if(isReloading || currentArrow == null) return;
-        fireRotation = new Vector3(0.01f * orientation.rotation.eulerAngles.x, 0.01f * orientation.rotation.eulerAngles.y, 0.001f * orientation.rotation.eulerAngles.z);
+       
+        yRotation = -orientation.rotation.eulerAngles.x;
+
+        if(orientation.rotation.eulerAngles.y < 0f && Mathf.Abs(orientation.rotation.eulerAngles.y) > 90f)
+        {
+            zRotation = orientation.rotation.eulerAngles.y;
+            xRotation = 90f + orientation.rotation.eulerAngles.y;
+        }
+        
+        if(orientation.rotation.eulerAngles.y < 0f && Mathf.Abs(orientation.rotation.eulerAngles.y) < 90f)
+        {
+            zRotation = orientation.rotation.eulerAngles.y;
+            xRotation = 90f + orientation.rotation.eulerAngles.y;
+        }
+
+        Debug.Log(orientation.rotation.eulerAngles.y);
+        Debug.Log(xRotation);
+
+        fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();
         currentArrow.Fly(force);
