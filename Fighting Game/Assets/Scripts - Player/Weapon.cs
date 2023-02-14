@@ -20,11 +20,13 @@ public class Weapon : MonoBehaviour
 
     private bool isReloading;
 
-    private float xRotation;
+    private float xRotation=90f;
 
     private float yRotation;
 
     private float zRotation;
+
+    private float rotationTrack;
 
     private Vector3 fireRotation;
 
@@ -54,20 +56,16 @@ public class Weapon : MonoBehaviour
         if(isReloading || currentArrow == null) return;
        
         yRotation = -orientation.rotation.eulerAngles.x;
-
-        if(orientation.rotation.eulerAngles.y < 0f && Mathf.Abs(orientation.rotation.eulerAngles.y) > 90f)
-        {
-            zRotation = orientation.rotation.eulerAngles.y;
-            xRotation = 90f + orientation.rotation.eulerAngles.y;
-        }
+    /*
         
-        if(orientation.rotation.eulerAngles.y < 0f && Mathf.Abs(orientation.rotation.eulerAngles.y) < 90f)
-        {
             zRotation = orientation.rotation.eulerAngles.y;
             xRotation = 90f + orientation.rotation.eulerAngles.y;
-        }
+       
+        */
 
+        rotationTrack = xRotation-orientation.rotation.eulerAngles.y;
         Debug.Log(orientation.rotation.eulerAngles.y);
+        Debug.Log(rotationTrack);
         Debug.Log(xRotation);
 
         fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
