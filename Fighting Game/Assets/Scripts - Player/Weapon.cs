@@ -54,7 +54,11 @@ public class Weapon : MonoBehaviour
     public void fire(float firePower)
     {
         if(isReloading || currentArrow == null) return;
+        Debug.Log(orientation.rotation.eulerAngles.x);
        
+        if(orientation.rotation.eulerAngles.x > 90f)
+        yRotation = 360f - orientation.rotation.eulerAngles.x;
+        else
         yRotation = -orientation.rotation.eulerAngles.x;
     /*
         
@@ -63,11 +67,37 @@ public class Weapon : MonoBehaviour
        
         */
 
-        rotationTrack = xRotation-orientation.rotation.eulerAngles.y;
-        Debug.Log(orientation.rotation.eulerAngles.y);
+        rotationTrack = orientation.rotation.eulerAngles.y;
         Debug.Log(rotationTrack);
-        Debug.Log(xRotation);
+        //xRotation = rotationTrack;
+        if(rotationTrack >= 45f && rotationTrack <= 135f){
+            xRotation = rotationTrack;
+            zRotation = -(rotationTrack - 90f);
 
+        }
+
+        if(rotationTrack < 225f && rotationTrack > 135f){
+            xRotation = -(rotationTrack - 180f);
+            zRotation = -(rotationTrack - 90f);
+        }
+
+        if(rotationTrack < 315f && rotationTrack > 225f){
+            xRotation = -(rotationTrack - 180f);
+            zRotation = (rotationTrack - 270f);
+        }
+
+        if(rotationTrack > 315f){
+            xRotation = -(rotationTrack - 270f);
+            zRotation = (rotationTrack - 360f);
+        }
+
+        if(rotationTrack < 45f && rotationTrack > 0f){
+            xRotation = rotationTrack;
+            zRotation = -(rotationTrack - 90f);
+        }
+
+        Debug.Log(xRotation);
+        Debug.Log(zRotation);
         fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();
