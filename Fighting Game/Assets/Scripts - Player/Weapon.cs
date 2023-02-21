@@ -88,7 +88,7 @@ public class Weapon : MonoBehaviour
 
         if(rotationTrack > 315f){
             xRotation = -(rotationTrack - 270f);
-            zRotation = (rotationTrack - 360f);
+            zRotation = (rotationTrack - 270f);
         }
 
         if(rotationTrack < 45f && rotationTrack > 0f){
