@@ -60,16 +60,10 @@ public class Weapon : MonoBehaviour
         yRotation = 360f - orientation.rotation.eulerAngles.x;
         else
         yRotation = -orientation.rotation.eulerAngles.x;
-    /*
-        
-            zRotation = orientation.rotation.eulerAngles.y;
-            xRotation = 90f + orientation.rotation.eulerAngles.y;
-       
-        */
-
+   
         rotationTrack = orientation.rotation.eulerAngles.y;
         Debug.Log(rotationTrack);
-        //xRotation = rotationTrack;
+        
         if(rotationTrack >= 45f && rotationTrack <= 135f){
             xRotation = rotationTrack;
             zRotation = -(rotationTrack - 90f);

@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
+    public float attackRange = 3f;
+    private string enemyTag = "Enemy Head";
+
+    [SerializeField] AudioSource meleeHit;
 
     void Update()
     {
@@ -32,7 +34,11 @@ public class PlayerCombat : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, attackRange);
         foreach (var hitCollider in hitColliders)
         {
-            hitCollider.SendMessage("AddDamage");
+            if (hitCollider.CompareTag(enemyTag))
+            {
+                hitCollider.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+                meleeHit.Play();
+            };
         }
 
     }
