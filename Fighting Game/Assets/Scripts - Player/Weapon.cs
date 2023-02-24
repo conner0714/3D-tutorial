@@ -20,6 +20,14 @@ public class Weapon : MonoBehaviour
 
     private bool isReloading;
 
+    private float xRotation=90f;
+
+    private float yRotation;
+
+    private float zRotation;
+
+    private float rotationTrack;
+
     private Vector3 fireRotation;
 
     public void SetEnemyTag(string enemyTag)
@@ -46,7 +54,45 @@ public class Weapon : MonoBehaviour
     public void fire(float firePower)
     {
         if(isReloading || currentArrow == null) return;
-        fireRotation = new Vector3(0.01f * orientation.rotation.eulerAngles.x, 0.01f * orientation.rotation.eulerAngles.y, 0.001f * orientation.rotation.eulerAngles.z);
+        Debug.Log(orientation.rotation.eulerAngles.x);
+       
+        if(orientation.rotation.eulerAngles.x > 90f)
+        yRotation = 360f - orientation.rotation.eulerAngles.x;
+        else
+        yRotation = -orientation.rotation.eulerAngles.x;
+   
+        rotationTrack = orientation.rotation.eulerAngles.y;
+        Debug.Log(rotationTrack);
+        
+        if(rotationTrack >= 45f && rotationTrack <= 135f){
+            xRotation = rotationTrack;
+            zRotation = -(rotationTrack - 90f);
+
+        }
+
+        if(rotationTrack < 225f && rotationTrack > 135f){
+            xRotation = -(rotationTrack - 180f);
+            zRotation = -(rotationTrack - 90f);
+        }
+
+        if(rotationTrack < 315f && rotationTrack > 225f){
+            xRotation = -(rotationTrack - 180f);
+            zRotation = (rotationTrack - 270f);
+        }
+
+        if(rotationTrack > 315f){
+            xRotation = -(rotationTrack - 270f);
+            zRotation = (rotationTrack - 270f);
+        }
+
+        if(rotationTrack < 45f && rotationTrack > 0f){
+            xRotation = rotationTrack;
+            zRotation = -(rotationTrack - 90f);
+        }
+
+        Debug.Log(xRotation);
+        Debug.Log(zRotation);
+        fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();
         currentArrow.Fly(force);

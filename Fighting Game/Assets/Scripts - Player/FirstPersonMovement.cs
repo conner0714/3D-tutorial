@@ -54,6 +54,7 @@ public class FirstPersonMovement : MonoBehaviour
             rb.drag = 0;
             airMultiplier = 0.1f; 
         }
+        SpeedControl();
     }
 
     private void FixedUpdate()
