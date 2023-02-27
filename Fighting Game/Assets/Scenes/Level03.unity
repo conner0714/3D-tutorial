@@ -1481,6 +1481,7 @@ MonoBehaviour:
   collectCoin: {fileID: 1359383813}
   collectSpeed: {fileID: 1359383820}
   collectJump: {fileID: 1359383819}
+  duration: 4
 --- !u!82 &1359383815
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3177,6 +3178,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7883187522052162185, guid: 4dbf9393a71687b4897a71f9c8d2e05d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883187522052162186, guid: 4dbf9393a71687b4897a71f9c8d2e05d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

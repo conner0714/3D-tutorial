@@ -38,11 +38,12 @@ public class Arrow : MonoBehaviour
             if (collider.CompareTag(enemyTag))
             {
                 collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                transform.SetParent(collider.transform);
             }
 
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             rigidbody.isKinematic = true;
-            transform.SetParent(collider.transform);
+            //transform.SetParent(collider.transform);
         }
 } 
