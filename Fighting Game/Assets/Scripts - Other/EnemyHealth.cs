@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float HP = 100;
+    public float HP = 200;
     public Slider healthBar; 
 
     void Update(){
@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     
     public void TakeDamage(float damageAmount){
         HP -= damageAmount;
+        Debug.Log(this);
         if(HP <= 0)
         {
             Destroy(this.transform.parent.gameObject);
