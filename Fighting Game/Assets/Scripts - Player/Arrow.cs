@@ -23,6 +23,7 @@ public class Arrow : MonoBehaviour
 
     public void Fly(Vector3 force)
     {
+        Debug.Log(force);
         rigidbody.isKinematic = false;
         rigidbody.AddForce(force, ForceMode.Impulse);
         rigidbody.AddTorque(transform.right * torque);

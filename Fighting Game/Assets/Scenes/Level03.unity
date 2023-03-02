@@ -2825,6 +2825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1916780a29b4341b0dc686fb193f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 100
   healthBar: {fileID: 1243943688}
 --- !u!23 &3618168384268343928
 MeshRenderer:
