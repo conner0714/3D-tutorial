@@ -245,19 +245,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 91537696499146005, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
   m_PrefabInstance: {fileID: 531175270}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &63958071
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63958067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.23307085, y: 0.31269264, z: 1.1508412}
-  m_Center: {x: 0.46654105, y: 1.0264089, z: 0.5286157}
 --- !u!114 &63958073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +255,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23d42063b035b774ab6506d3faaf1f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &63958075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63958067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cb230fc31602340b3117093b3b428d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &148890023
@@ -1206,6 +1205,10 @@ PrefabInstance:
       value: ShieldWarrior
       objectReference: {fileID: 0}
     - target: {fileID: 91537696499171573, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
+      propertyPath: m_TagString
+      value: Enemy Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 91537697237144109, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
       propertyPath: m_TagString
       value: Enemy Body
       objectReference: {fileID: 0}
@@ -3122,6 +3125,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1418494952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 91537697237144109, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
+  m_PrefabInstance: {fileID: 531175270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1418494956
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418494952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 21ca816de6f3abd4cbee2c0462c8a186, type: 3}
 --- !u!1 &1442275540
 GameObject:
   m_ObjectHideFlags: 0
