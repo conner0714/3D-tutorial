@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Forward : MonoBehaviour
 {
+    private GameObject wayPoint;
+    private GameObject warrior;
+    private Vector3 wayPointPos;
+    private Vector3 warriorPos;
     private Animator mAnimator;
+    private float attackCooldown = 1f;
+    private bool swing = true;
     // Start is called before the first frame update
     void Start()
     {
         mAnimator = GetComponent<Animator>();
+        wayPoint = GameObject.Find("wayPoint");
+        warrior = GameObject.Find("ShieldWarrior");
     }
 
     // Update is called once per frame
@@ -60,6 +68,22 @@ public class Forward : MonoBehaviour
             {
                 mAnimator.SetTrigger("Attack");
             }
+
+            if((Mathf.Abs(wayPoint.transform.position.x - warrior.transform.position.x) < 2) &&
+            (Mathf.Abs(wayPoint.transform.position.y - warrior.transform.position.y) < 4) &&
+            (Mathf.Abs(wayPoint.transform.position.z - warrior.transform.position.z) < 2) && swing)
+            {
+                mAnimator.SetTrigger("Attack");
+                swing = false;
+                StartCoroutine("Reset");
+            }
         }
     }
+    IEnumerator Reset() 
+    {
+    // your process
+    yield return new WaitForSeconds(attackCooldown);
+    // continue process
+    swing = true;
+    } 
 }
