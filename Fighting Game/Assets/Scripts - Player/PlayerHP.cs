@@ -5,29 +5,37 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
+    bool regen = true;
+    public float regenAmount = 5;
     public float HP = 200;
     public Slider healthBar; 
 
     void Update(){
         healthBar.value = HP;
+        if(regen && HP < 200)
+        {
+            StartCoroutine("Regeneration");
+            if(HP > 200)
+            {
+                HP = 200;
+            }
+        }
     }
     
     public void PlayerDamaged(float damageAmount){
         HP -= damageAmount;
-        Debug.Log(this);
-        if(HP <= 0)
-        {
-            Destroy(this.transform.parent.gameObject);
-            //Play Death Animation
-        } 
-        else 
-        {
-            //Play Hit Animation
-        }
     }
 
     public float GetHealth()
     {
         return HP;
+    }
+
+    IEnumerator Regeneration()
+    {
+        regen = false;
+        yield return new WaitForSeconds(2);
+        HP += 5;
+        regen = true;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Forward : MonoBehaviour
 {
+    [SerializeField] AudioSource slash;
     private GameObject wayPoint;
     private GameObject warrior;
     private Vector3 wayPointPos;
@@ -74,16 +75,23 @@ public class Forward : MonoBehaviour
             (Mathf.Abs(wayPoint.transform.position.z - warrior.transform.position.z) < 2) && swing)
             {
                 mAnimator.SetTrigger("Attack");
+                StartCoroutine("SwingDelay");
                 swing = false;
                 StartCoroutine("Reset");
             }
         }
     }
+    IEnumerator SwingDelay() 
+    {
+        yield return new WaitForSeconds(.5f);
+        slash.Play();
+    } 
+
     IEnumerator Reset() 
     {
-    // your process
-    yield return new WaitForSeconds(attackCooldown);
-    // continue process
-    swing = true;
+        // your process
+        yield return new WaitForSeconds(attackCooldown);
+        // continue process
+        swing = true;
     } 
 }

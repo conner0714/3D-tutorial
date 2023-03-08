@@ -8,6 +8,10 @@ public class EnemyHealth : MonoBehaviour
     public float HP = 200;
     public Slider healthBar; 
 
+    public GameObject shieldWarriorPrefab;
+
+    public Transform spawnPoint;
+
     void Update(){
         healthBar.value = HP;
     }
@@ -18,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         if(HP <= 0)
         {
             Destroy(this.transform.parent.gameObject);
+            Instantiate(shieldWarriorPrefab, spawnPoint);
             //Play Death Animation
         } 
         else 

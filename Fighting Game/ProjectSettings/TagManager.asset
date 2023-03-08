@@ -10,6 +10,8 @@ TagManager:
   - Speed Boost
   - Jump Boost
   - Gravity
+  - Regeneration
+  - MedicalKit
   layers:
   - Default
   - TransparentFX
