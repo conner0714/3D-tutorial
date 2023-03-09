@@ -79,7 +79,9 @@ public class Forward : MonoBehaviour
                 swing = false;
                 StartCoroutine("Reset");
             }
+            
         }
+        
     }
     IEnumerator SwingDelay() 
     {

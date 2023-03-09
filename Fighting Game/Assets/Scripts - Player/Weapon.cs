@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
         yRotation = -orientation.rotation.eulerAngles.x;
    
         rotationTrack = orientation.rotation.eulerAngles.y;
-        Debug.Log(rotationTrack);
+        //Debug.Log(rotationTrack);
         
         if(rotationTrack >= 45f && rotationTrack <= 135f){
             xRotation = rotationTrack;
@@ -92,6 +92,7 @@ public class Weapon : MonoBehaviour
 
         Debug.Log(xRotation);
         Debug.Log(zRotation);
+        Debug.Log(yRotation);
         fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();

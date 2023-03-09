@@ -29,7 +29,6 @@ public class ItemCollector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        StartCoroutine(Pickup(other));
-       other = null;
     }
     
 
@@ -41,8 +40,8 @@ public class ItemCollector : MonoBehaviour
             collectCoin.Play();
             coins++;
             coinsText.text = "Coins: " + coins;
-        }
-        if (other.gameObject.CompareTag("Jump Boost"))
+        } 
+        else if (other.gameObject.CompareTag("Jump Boost"))
         {
             Destroy(other.gameObject);
             firstPersonMovement.jumpForce = 10f;
@@ -50,7 +49,7 @@ public class ItemCollector : MonoBehaviour
             yield return new WaitForSeconds(duration);
             firstPersonMovement.jumpForce = 8f;
         }
-        if (other.gameObject.CompareTag("Speed Boost"))
+        else if (other.gameObject.CompareTag("Speed Boost"))
         {
             Destroy(other.gameObject);
             firstPersonMovement.moveSpeed = 7f;
@@ -58,7 +57,7 @@ public class ItemCollector : MonoBehaviour
             yield return new WaitForSeconds(duration);
             firstPersonMovement.moveSpeed = 4f;
         }
-        if (other.gameObject.CompareTag("Regeneration"))
+        else if (other.gameObject.CompareTag("Regeneration"))
         {
             Destroy(other.gameObject);
             playerHP.regenAmount = 10f;
@@ -66,16 +65,15 @@ public class ItemCollector : MonoBehaviour
             yield return new WaitForSeconds(duration);
             playerHP.regenAmount = 5f;
         }
-        if (other.gameObject.CompareTag("MedicalKit"))
+        else if (other.gameObject.CompareTag("MedicalKit"))
         {
             Destroy(other.gameObject);
             playerHP.HP = 200;
             collectSpeed.Play();
         }
     }
-    
-
-    /*private void OnTriggerEnter(Collider other)
+}
+ /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Coin"))
         {
@@ -121,4 +119,3 @@ public class ItemCollector : MonoBehaviour
         yield return new WaitForSeconds(duration);
     }
     */
-}

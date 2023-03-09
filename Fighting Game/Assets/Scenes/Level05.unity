@@ -1827,12 +1827,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623475050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9262419, y: 3.3902385, z: 18.598742}
+  m_LocalPosition: {x: -3.0425847, y: -3, z: 12.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1092724870}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &629584019 stripped
 Transform:
@@ -2576,7 +2576,6 @@ Transform:
   - {fileID: 1493095579}
   - {fileID: 511457931}
   - {fileID: 63958069}
-  - {fileID: 623475051}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4076,7 +4075,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 1741085042}
   spawnPoint: {fileID: 292985838}
   arrowShot: {fileID: 1446779612}
-  orientation: {fileID: 1943463861}
+  orientation: {fileID: 384270223}
 --- !u!82 &1446779612
 AudioSource:
   m_ObjectHideFlags: 0

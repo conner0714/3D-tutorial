@@ -55,7 +55,6 @@ public class WeaponController : MonoBehaviour
         if (fire && firePower < maxFirePower)
         {
             firePower += Time.deltaTime * firePowerSpeed;
-            Debug.Log(Time.deltaTime);
         }
 
         if (fire && Input.GetMouseButtonUp(0))
