@@ -8,7 +8,7 @@ public class PlayerFollow : MonoBehaviour
     private GameObject wayPoint;
     private Vector3 wayPointPos;
     //T$$anonymous$$s will be the zombie's speed. Adjust as necessary.
-    private float speed = 2.0f;
+    public float speed = 2.0f;
     void Start ()
     {
       //At the start of the game, the zombies will find the gameobject called wayPoint.

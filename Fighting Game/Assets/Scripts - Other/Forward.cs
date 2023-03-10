@@ -12,9 +12,18 @@ public class Forward : MonoBehaviour
     private Animator mAnimator;
     private float attackCooldown = 1f;
     private bool swing = true;
+    private int powerSelector;
+    bool powerUpOn = true;
+    private GameObject player;
+    PlayerLife playerDamage;
+    PlayerFollow warriorFollower;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        playerDamage = player.GetComponent<PlayerLife>();
+        warriorFollower = GetComponent <PlayerFollow>();
         mAnimator = GetComponent<Animator>();
         wayPoint = GameObject.Find("wayPoint");
         warrior = GameObject.Find("ShieldWarrior");
@@ -69,7 +78,10 @@ public class Forward : MonoBehaviour
             {
                 mAnimator.SetTrigger("Attack");
             }
-
+            if(powerUpOn)
+            {
+                StartCoroutine("WarriorPowerUp");
+            }
             if((Mathf.Abs(wayPoint.transform.position.x - warrior.transform.position.x) < 2) &&
             (Mathf.Abs(wayPoint.transform.position.y - warrior.transform.position.y) < 4) &&
             (Mathf.Abs(wayPoint.transform.position.z - warrior.transform.position.z) < 2) && swing)
@@ -83,6 +95,25 @@ public class Forward : MonoBehaviour
         }
         
     }
+
+    IEnumerator WarriorPowerUp()
+    {
+        powerUpOn = false;
+        powerSelector = Random.Range(1, 3);
+        if (powerSelector == 1)
+        {
+            warriorFollower.speed = 4f;
+            slash.Play();
+        }
+        if (powerSelector == 2)
+        {
+            playerDamage.damage = 40;
+            slash.Play();
+        }
+        yield return new WaitForSeconds(5f);
+        powerUpOn = true;
+    }
+
     IEnumerator SwingDelay() 
     {
         yield return new WaitForSeconds(.5f);

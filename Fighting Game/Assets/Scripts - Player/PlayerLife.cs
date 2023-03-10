@@ -9,6 +9,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] AudioSource death;
     bool dead = false;
     bool canGetHit = true;
+    public int damage = 20;
     private GameObject playerHealthCanvas;
     public Slider healthBar;
 
@@ -27,7 +28,7 @@ public class PlayerLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy Body") && canGetHit)
         {
-            playerHealthCanvas.GetComponent<PlayerHP>().PlayerDamaged(20);
+            playerHealthCanvas.GetComponent<PlayerHP>().PlayerDamaged(damage);
             canGetHit = false;
             if(playerHealthCanvas.GetComponent<PlayerHP>().GetHealth() < 0)
             {
