@@ -7,10 +7,12 @@ public class EnemyHealth : MonoBehaviour
 {
     public float HP = 200;
     public Slider healthBar; 
+    private GameObject currentWarrior;
 
-    public GameObject shieldWarriorPrefab;
-
-    public Transform spawnPoint;
+    void Start()
+    {
+        currentWarrior = GameObject.Find("ShieldWarrior");
+    }
 
     void Update(){
         healthBar.value = HP;
@@ -22,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
         if(HP <= 0)
         {
             Destroy(this.transform.parent.gameObject);
-            Instantiate(shieldWarriorPrefab, spawnPoint);
+            currentWarrior.GetComponent<Forward>().RespawnAfterTime();
             //Play Death Animation
         } 
         else 

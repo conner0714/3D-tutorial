@@ -6,7 +6,7 @@ public class Forward : MonoBehaviour
 {
     [SerializeField] AudioSource slash;
     private GameObject wayPoint;
-    private GameObject warrior;
+    private GameObject currentWarrior;
     private Vector3 wayPointPos;
     private Vector3 warriorPos;
     private Animator mAnimator;
@@ -17,16 +17,26 @@ public class Forward : MonoBehaviour
     private GameObject player;
     PlayerLife playerDamage;
     PlayerFollow warriorFollower;
+    public Transform spawnPoint;
+    public GameObject shieldWarriorPrefab;
+    bool firstWarrior = true;
+    EnemyHealth enemyHP;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(firstWarrior)
+        {
+            currentWarrior = GameObject.Find("ShieldWarrior");
+            firstWarrior = false;
+        }
         player = GameObject.Find("Player");
         playerDamage = player.GetComponent<PlayerLife>();
-        warriorFollower = GetComponent <PlayerFollow>();
-        mAnimator = GetComponent<Animator>();
+        warriorFollower = currentWarrior.GetComponent<PlayerFollow>();
+        mAnimator = currentWarrior.GetComponent<Animator>();
         wayPoint = GameObject.Find("wayPoint");
-        warrior = GameObject.Find("ShieldWarrior");
+        enemyHP = currentWarrior.GetComponent<EnemyHealth>();
+        //enemyHP.HP = 200;
     }
 
     // Update is called once per frame
@@ -82,9 +92,9 @@ public class Forward : MonoBehaviour
             {
                 StartCoroutine("WarriorPowerUp");
             }
-            if((Mathf.Abs(wayPoint.transform.position.x - warrior.transform.position.x) < 2) &&
-            (Mathf.Abs(wayPoint.transform.position.y - warrior.transform.position.y) < 4) &&
-            (Mathf.Abs(wayPoint.transform.position.z - warrior.transform.position.z) < 2) && swing)
+            if((Mathf.Abs(wayPoint.transform.position.x - currentWarrior.transform.position.x) < 2) &&
+            (Mathf.Abs(wayPoint.transform.position.y - currentWarrior.transform.position.y) < 4) &&
+            (Mathf.Abs(wayPoint.transform.position.z - currentWarrior.transform.position.z) < 2) && swing)
             {
                 mAnimator.SetTrigger("Attack");
                 StartCoroutine("SwingDelay");
@@ -96,21 +106,33 @@ public class Forward : MonoBehaviour
         
     }
 
+
+    public void RespawnAfterTime()
+    {
+        currentWarrior = Instantiate(shieldWarriorPrefab, spawnPoint);
+        currentWarrior.transform.localPosition = Vector3.zero;
+        Start();
+    }
+
     IEnumerator WarriorPowerUp()
     {
         powerUpOn = false;
         powerSelector = Random.Range(1, 3);
         if (powerSelector == 1)
         {
-            warriorFollower.speed = 4f;
+            warriorFollower.speed = 3f;
             slash.Play();
+            yield return new WaitForSeconds(5f);
+            warriorFollower.speed = 2f;
         }
         if (powerSelector == 2)
         {
             playerDamage.damage = 40;
             slash.Play();
+            yield return new WaitForSeconds(5f);
+            playerDamage.damage = 20;
         }
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         powerUpOn = true;
     }
 
