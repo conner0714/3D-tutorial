@@ -8,10 +8,12 @@ public class EnemyHealth : MonoBehaviour
     public float HP = 200;
     public Slider healthBar; 
     private GameObject currentWarrior;
+    private GameObject warriorHitbox;
 
     void Start()
     {
         currentWarrior = GameObject.Find("ShieldWarrior");
+        HP = 200;
     }
 
     void Update(){
@@ -23,8 +25,9 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log(this);
         if(HP <= 0)
         {
-            Destroy(this.transform.parent.gameObject);
             currentWarrior.GetComponent<Forward>().RespawnAfterTime();
+            Destroy(this.transform.parent.gameObject);
+    
             //Play Death Animation
         } 
         else 

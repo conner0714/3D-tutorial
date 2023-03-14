@@ -16,27 +16,30 @@ public class Forward : MonoBehaviour
     bool powerUpOn = true;
     private GameObject player;
     PlayerLife playerDamage;
+    EnemyKill playerKillCount;
+    private int KillCount;
     PlayerFollow warriorFollower;
     public Transform spawnPoint;
     public GameObject shieldWarriorPrefab;
-    bool firstWarrior = true;
     EnemyHealth enemyHP;
+    private GameObject warriorHitbox;
+    private string cloneCounter;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(firstWarrior)
-        {
-            currentWarrior = GameObject.Find("ShieldWarrior");
-            firstWarrior = false;
-        }
         player = GameObject.Find("Player");
         playerDamage = player.GetComponent<PlayerLife>();
+        wayPoint = GameObject.Find("wayPoint");
+        playerKillCount = player.GetComponent<EnemyKill>();
+        KillCount = playerKillCount.GetKillCount();
+        for (int i = 0; i < KillCount; i++)
+        {
+            cloneCounter = cloneCounter + "(Clone)";
+        }
+        currentWarrior = GameObject.Find(cloneCounter);
         warriorFollower = currentWarrior.GetComponent<PlayerFollow>();
         mAnimator = currentWarrior.GetComponent<Animator>();
-        wayPoint = GameObject.Find("wayPoint");
-        enemyHP = currentWarrior.GetComponent<EnemyHealth>();
-        //enemyHP.HP = 200;
     }
 
     // Update is called once per frame
@@ -44,6 +47,7 @@ public class Forward : MonoBehaviour
     {
         if(mAnimator != null)
         {
+            Debug.Log("hi");
             if(Input.GetKeyDown(KeyCode.Z))
             {
                 mAnimator.SetTrigger("TrForwardLeft");   
@@ -101,7 +105,6 @@ public class Forward : MonoBehaviour
                 swing = false;
                 StartCoroutine("Reset");
             }
-            
         }
         
     }
@@ -111,7 +114,6 @@ public class Forward : MonoBehaviour
     {
         currentWarrior = Instantiate(shieldWarriorPrefab, spawnPoint);
         currentWarrior.transform.localPosition = Vector3.zero;
-        Start();
     }
 
     IEnumerator WarriorPowerUp()
