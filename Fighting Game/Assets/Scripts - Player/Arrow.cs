@@ -44,6 +44,6 @@ public class Arrow : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             rigidbody.isKinematic = true;
-            transform.SetParent(collider.transform);
+            //transform.SetParent(collider.transform);
         }
 } 

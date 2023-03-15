@@ -23,7 +23,7 @@ public class Forward : MonoBehaviour
     public GameObject shieldWarriorPrefab;
     EnemyHealth enemyHP;
     private GameObject warriorHitbox;
-    private string cloneCounter;
+    private string cloneCounter = "ShieldWarrior";
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +38,7 @@ public class Forward : MonoBehaviour
             cloneCounter = cloneCounter + "(Clone)";
         }
         currentWarrior = GameObject.Find(cloneCounter);
+        Debug.Log(currentWarrior);
         warriorFollower = currentWarrior.GetComponent<PlayerFollow>();
         mAnimator = currentWarrior.GetComponent<Animator>();
     }
@@ -47,7 +48,6 @@ public class Forward : MonoBehaviour
     {
         if(mAnimator != null)
         {
-            Debug.Log("hi");
             if(Input.GetKeyDown(KeyCode.Z))
             {
                 mAnimator.SetTrigger("TrForwardLeft");   
@@ -151,4 +151,9 @@ public class Forward : MonoBehaviour
         // continue process
         swing = true;
     } 
+
+    public string warriorReturn()
+    {
+        return cloneCounter;
+    }
 }
