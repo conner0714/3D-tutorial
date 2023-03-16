@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private float reloadTime;
+    public float reloadTime;
 
     [SerializeField] private Arrow arrowPrefab;
 
@@ -93,7 +93,8 @@ public class Weapon : MonoBehaviour
         Debug.Log(xRotation);
         Debug.Log(zRotation);
         Debug.Log(yRotation);
-        fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
+        fireRotation = new Vector3(1, 0.01f * yRotation, 0);
+        //fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();
         currentArrow.Fly(force);

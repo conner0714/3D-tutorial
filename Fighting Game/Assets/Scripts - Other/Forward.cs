@@ -129,7 +129,7 @@ public class Forward : MonoBehaviour
         }
         if (powerSelector == 2)
         {
-            playerDamage.damage = 40;
+            playerDamage.damage = 100;
             slash.Play();
             yield return new WaitForSeconds(5f);
             playerDamage.damage = 20;
