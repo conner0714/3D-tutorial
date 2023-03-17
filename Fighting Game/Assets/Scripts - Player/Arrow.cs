@@ -16,6 +16,12 @@ public class Arrow : MonoBehaviour
     
     private bool didHit;
 
+    public bool explosiveArrows = false;
+
+    public Transform attackPoint;
+    public float attackRange = 3f;
+    private string trackTag = "Enemy Head";
+
     public void SetEnemyTag(string enemyTag)
     {
         this.enemyTag = enemyTag;
@@ -31,6 +37,18 @@ public class Arrow : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider)
         {
+            if(explosiveArrows)
+            {
+                Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, attackRange);
+                foreach (var hitCollider in hitColliders)
+                {       
+                    if (hitCollider.CompareTag(trackTag))
+                    {
+                        hitCollider.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+                    };
+                }
+            }
+
             if(didHit) return;
             didHit = true;
 
@@ -46,4 +64,12 @@ public class Arrow : MonoBehaviour
             rigidbody.isKinematic = true;
             //transform.SetParent(collider.transform);
         }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 } 

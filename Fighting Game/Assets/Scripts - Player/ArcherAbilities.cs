@@ -9,17 +9,22 @@ public class ArcherAbilities : MonoBehaviour
     Weapon bowController;
     GameObject player;
     GameObject bow;
+    GameObject arrow;
+    Arrow arrowScript;
 
     //Cooldown variables
     bool speedCooldown = true;
     bool bowCooldown = true;
+    bool explosiveArrowsCooldown = true;
 
 
     void Start()
     {
         player = GameObject.Find("Player");
         bow = GameObject.Find("Bow");
+        arrow = GameObject.Find("Arrow");
         bowController = bow.GetComponent<Weapon>();
+        arrowScript = arrow.GetComponent<Arrow>();
         firstPersonMovement = player.GetComponent<FirstPersonMovement>();
     }
 
@@ -36,9 +41,9 @@ public class ArcherAbilities : MonoBehaviour
             StartCoroutine("SurvivalArrow");
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && explosiveArrowsCooldown)
         {
-           // StartCoroutine("ExplosiveArrows");
+           StartCoroutine("ExplosiveArrows");
         }
     }
 
@@ -64,7 +69,12 @@ public class ArcherAbilities : MonoBehaviour
 
     IEnumerator ExplosiveArrows()
     {
-        //T.D.
-        yield return new WaitForSeconds(4f);
+        Debug.Log("Hey");
+        arrowScript.explosiveArrows = true;
+        explosiveArrowsCooldown = false;
+        yield return new WaitForSeconds(100f);
+        arrowScript.explosiveArrows = false;
+        yield return new WaitForSeconds(20f);
+        explosiveArrowsCooldown = true;
     }
 }
