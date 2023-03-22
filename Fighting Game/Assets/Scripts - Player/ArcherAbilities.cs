@@ -11,6 +11,12 @@ public class ArcherAbilities : MonoBehaviour
     GameObject bow;
     GameObject arrow;
     Arrow arrowScript;
+    GameObject explosive;
+    ExplosiveArrowSpellCooldown explosiveArrowTimer;
+    GameObject rapid;
+    RapidFireSpellCooldown rapidFireTimer;
+    GameObject speed;
+    SpeedUpSpellCooldown speedUpTimer;
 
     //Cooldown variables
     bool speedCooldown = true;
@@ -26,6 +32,12 @@ public class ArcherAbilities : MonoBehaviour
         bowController = bow.GetComponent<Weapon>();
         arrowScript = arrow.GetComponent<Arrow>();
         firstPersonMovement = player.GetComponent<FirstPersonMovement>();
+        explosive = GameObject.Find("ExplosiveArrowCooldown");
+        explosiveArrowTimer = explosive.GetComponent<ExplosiveArrowSpellCooldown>();
+        rapid = GameObject.Find("RapidFireCooldown");
+        rapidFireTimer = rapid.GetComponent<RapidFireSpellCooldown>();
+        speed = GameObject.Find("SpeedUpCooldown");
+        speedUpTimer = speed.GetComponent<SpeedUpSpellCooldown>();
     }
 
     // Update is called once per frame
@@ -51,6 +63,7 @@ public class ArcherAbilities : MonoBehaviour
     {
         firstPersonMovement.moveSpeed = 6f;
         speedCooldown = false;
+        speedUpTimer.UseSpell();
         yield return new WaitForSeconds(4f);
         firstPersonMovement.moveSpeed = 4f;
         yield return new WaitForSeconds(9f);
@@ -61,6 +74,7 @@ public class ArcherAbilities : MonoBehaviour
     {
         bowController.reloadTime = 0.5f;
         bowCooldown = false;
+        rapidFireTimer.UseSpell();
         yield return new WaitForSeconds(4f);
         bowController.reloadTime = 1f;
         yield return new WaitForSeconds(9f);
@@ -72,9 +86,10 @@ public class ArcherAbilities : MonoBehaviour
         Debug.Log("Hey");
         arrowScript.explosiveArrows = true;
         explosiveArrowsCooldown = false;
-        yield return new WaitForSeconds(100f);
+        explosiveArrowTimer.UseSpell();
+        yield return new WaitForSeconds(5f);
         arrowScript.explosiveArrows = false;
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(4f);
         explosiveArrowsCooldown = true;
     }
 }
