@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviour
 
     private Arrow currentArrow;
 
+    Collider currentArrowCollider;
+
     private string enemyTag;
 
     private bool isReloading;

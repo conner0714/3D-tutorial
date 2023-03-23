@@ -13,6 +13,9 @@ public class Arrow : MonoBehaviour
     [SerializeField] private Rigidbody rigidbody;
 
     private string enemyTag;
+
+    Weapon weaponScript;
+    GameObject bowWeapon; 
     
     private bool didHit;
 
@@ -21,6 +24,12 @@ public class Arrow : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 3f;
     private string trackTag = "Enemy Head";
+
+    public void Start()
+    {
+        bowWeapon = GameObject.Find("Bow");
+        weaponScript = bowWeapon.GetComponent<Weapon>();
+    }
 
     public void SetEnemyTag(string enemyTag)
     {
@@ -62,6 +71,8 @@ public class Arrow : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             rigidbody.isKinematic = true;
+            //weaponScript.Reload();
+            Destroy(gameObject);
             //transform.SetParent(collider.transform);
         }
 
