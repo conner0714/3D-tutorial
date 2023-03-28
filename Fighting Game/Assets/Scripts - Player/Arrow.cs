@@ -66,13 +66,17 @@ public class Arrow : MonoBehaviour
             if (collider.CompareTag(enemyTag))
             {
                 collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
+
+            if (collider.CompareTag("Ground")){
+                Destroy(gameObject);
             }
 
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             rigidbody.isKinematic = true;
             //weaponScript.Reload();
-            Destroy(gameObject);
             //transform.SetParent(collider.transform);
         }
 

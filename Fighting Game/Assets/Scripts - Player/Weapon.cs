@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
 
     private Arrow currentArrow;
 
-    Collider currentArrowCollider;
+    public Collider currentArrowCollider;
 
     private string enemyTag;
 
@@ -50,12 +50,15 @@ public class Weapon : MonoBehaviour
         currentArrow = Instantiate(arrowPrefab, spawnPoint);
         currentArrow.transform.localPosition = Vector3.zero;
         currentArrow.SetEnemyTag(enemyTag);
+        currentArrowCollider.enabled = false;
         isReloading = false;
     }
 
     public void fire(float firePower)
     {
         if(isReloading || currentArrow == null) return;
+        
+        currentArrowCollider.enabled = true;
         Debug.Log(orientation.rotation.eulerAngles.x);
        
         if(orientation.rotation.eulerAngles.x > 90f)

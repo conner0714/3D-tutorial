@@ -12,6 +12,7 @@ TagManager:
   - Gravity
   - Regeneration
   - MedicalKit
+  - Ground
   layers:
   - Default
   - TransparentFX
