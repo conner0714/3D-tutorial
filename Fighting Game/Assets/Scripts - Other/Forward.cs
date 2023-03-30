@@ -122,17 +122,17 @@ public class Forward : MonoBehaviour
         powerSelector = Random.Range(1, 3);
         if (powerSelector == 1)
         {
-            warriorFollower.speed = 3f;
-            slash.Play();
-            yield return new WaitForSeconds(5f);
-            warriorFollower.speed = 2f;
-        }
-        if (powerSelector == 2)
-        {
             playerDamage.damage = 100;
             slash.Play();
             yield return new WaitForSeconds(5f);
             playerDamage.damage = 20;
+        }
+        if (powerSelector == 2)
+        {
+            mAnimator.SetTrigger("TrForward");
+            slash.Play();
+            yield return new WaitForSeconds(5f);
+            mAnimator.SetTrigger("Attack");
         }
         yield return new WaitForSeconds(10f);
         powerUpOn = true;
