@@ -17,6 +17,9 @@ public class ArcherAbilities : MonoBehaviour
     RapidFireSpellCooldown rapidFireTimer;
     GameObject speed;
     SpeedUpSpellCooldown speedUpTimer;
+    [SerializeField] AudioSource speedSound;
+    [SerializeField] AudioSource rapidFireSound;
+    [SerializeField] AudioSource explosiveArrowSound;
 
     //Cooldown variables
     bool speedCooldown = true;
@@ -64,6 +67,7 @@ public class ArcherAbilities : MonoBehaviour
         firstPersonMovement.moveSpeed = 6f;
         speedCooldown = false;
         speedUpTimer.UseSpell();
+        speedSound.Play();
         yield return new WaitForSeconds(4f);
         firstPersonMovement.moveSpeed = 4f;
         yield return new WaitForSeconds(9f);
@@ -75,6 +79,7 @@ public class ArcherAbilities : MonoBehaviour
         bowController.reloadTime = 0.5f;
         bowCooldown = false;
         rapidFireTimer.UseSpell();
+        rapidFireSound.Play();
         yield return new WaitForSeconds(4f);
         bowController.reloadTime = 1f;
         yield return new WaitForSeconds(9f);
@@ -87,6 +92,7 @@ public class ArcherAbilities : MonoBehaviour
         arrowScript.explosiveArrows = true;
         explosiveArrowsCooldown = false;
         explosiveArrowTimer.UseSpell();
+        explosiveArrowSound.Play();
         yield return new WaitForSeconds(5f);
         arrowScript.explosiveArrows = false;
         yield return new WaitForSeconds(4f);

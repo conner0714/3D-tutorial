@@ -18,6 +18,8 @@ public class Weapon : MonoBehaviour
 
     public Collider currentArrowCollider;
 
+    Arrow arrowScript;
+
     private string enemyTag;
 
     private bool isReloading;
@@ -52,6 +54,7 @@ public class Weapon : MonoBehaviour
         currentArrow.SetEnemyTag(enemyTag);
         currentArrowCollider.enabled = false;
         isReloading = false;
+        arrowScript = currentArrow.GetComponent<Arrow>();
     }
 
     public void fire(float firePower)
@@ -59,6 +62,7 @@ public class Weapon : MonoBehaviour
         if(isReloading || currentArrow == null) return;
         
         currentArrowCollider.enabled = true;
+        arrowScript.arrowFire = true;
         Debug.Log(orientation.rotation.eulerAngles.x);
        
         if(orientation.rotation.eulerAngles.x > 90f)

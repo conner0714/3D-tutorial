@@ -21,6 +21,8 @@ public class Arrow : MonoBehaviour
 
     public bool explosiveArrows = false;
 
+    public bool arrowFire = false;
+
     public Transform attackPoint;
     public float attackRange = 3f;
     private string trackTag = "Enemy Head";
@@ -44,6 +46,56 @@ public class Arrow : MonoBehaviour
         rigidbody.AddTorque(transform.right * torque);
         transform.SetParent(null);
     }
+    
+        void OnTriggerEnter(Collider collider)
+        {
+            if(arrowFire){
+                if(explosiveArrows)
+                {
+                    Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, attackRange);
+                    foreach (var hitCollider in hitColliders)
+                    {       
+                        if (hitCollider.CompareTag(trackTag))
+                        {
+                            hitCollider.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+                        }
+                    }
+                }
+
+                if(didHit) return;
+                didHit = true;
+
+                if(enemyTag == null) return;
+
+                if (collider.CompareTag(enemyTag))
+                {
+                    collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    Destroy(gameObject);
+                }
+
+                if (collider.CompareTag("Ground"))
+                {
+                    Destroy(gameObject);
+                }
+
+                if (collider.CompareTag("Player"))
+                {
+                    Destroy(gameObject);
+                }
+
+                rigidbody.velocity = Vector3.zero;
+                rigidbody.angularVelocity = Vector3.zero;
+                rigidbody.isKinematic = true;
+                arrowFire = false;
+            
+                //weaponScript.Reload();
+                //transform.SetParent(collider.transform);
+            }
+            
+         
+        }
+    
+    /*
     void OnTriggerEnter(Collider collider)
         {
             if(explosiveArrows)
@@ -79,6 +131,7 @@ public class Arrow : MonoBehaviour
             //weaponScript.Reload();
             //transform.SetParent(collider.transform);
         }
+        */
 
     void OnDrawGizmosSelected()
     {

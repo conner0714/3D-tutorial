@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
             shieldWarrior = shieldWarrior + "(Clone)";
         }
         currentWarrior = GameObject.Find(shieldWarrior);
-        HP = 200;
+        HP = 200 + 100*KillCount;
         playerKillCount = player.GetComponent<EnemyKill>();
     }
 

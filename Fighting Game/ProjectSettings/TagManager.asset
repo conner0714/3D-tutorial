@@ -13,6 +13,8 @@ TagManager:
   - Regeneration
   - MedicalKit
   - Ground
+  - Sword
+  - Shield
   layers:
   - Default
   - TransparentFX

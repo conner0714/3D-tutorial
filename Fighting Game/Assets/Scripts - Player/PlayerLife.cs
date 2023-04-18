@@ -26,7 +26,7 @@ public class PlayerLife : MonoBehaviour
     }
     private void OnCollisionEnter (Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy Body") && canGetHit)
+        if (collision.gameObject.CompareTag("Sword") && canGetHit)
         {
             playerHealthCanvas.GetComponent<PlayerHP>().PlayerDamaged(damage);
             canGetHit = false;
