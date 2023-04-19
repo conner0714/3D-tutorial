@@ -30,7 +30,7 @@ public class PlayerLife : MonoBehaviour
         {
             playerHealthCanvas.GetComponent<PlayerHP>().PlayerDamaged(damage);
             canGetHit = false;
-            if(playerHealthCanvas.GetComponent<PlayerHP>().GetHealth() < 0)
+            if(playerHealthCanvas.GetComponent<PlayerHP>().GetHealth() <= 0)
             {
                 healthBar.value = 0;
                 GetComponent<MeshRenderer>().enabled = false;

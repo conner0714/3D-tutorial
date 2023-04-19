@@ -9,9 +9,11 @@ public class PlayerHP : MonoBehaviour
     public float regenAmount = 5f;
     public float HP = 200;
     public Slider healthBar; 
+    [SerializeField] Text playerHealthText;
 
     void Update(){
         healthBar.value = HP;
+        playerHealthText.text = "" + HP;
         if(regen && HP < 200)
         {
             StartCoroutine("Regeneration");

@@ -14,7 +14,8 @@ public class EnemyHealth : MonoBehaviour
     private Forward warriorScript;
     private int KillCount;
     private string shieldWarrior = "ShieldWarrior";
-    
+    private GameObject enemyHealthCanvas;
+    [SerializeField] Text enemyHealthText;
 
     void Start()
     {
@@ -27,11 +28,13 @@ public class EnemyHealth : MonoBehaviour
         }
         currentWarrior = GameObject.Find(shieldWarrior);
         HP = 200 + 100*KillCount;
-        playerKillCount = player.GetComponent<EnemyKill>();
+        enemyHealthText.text = "" + HP;
+
     }
 
     void Update(){
         healthBar.value = HP;
+        enemyHealthText.text = "" + HP;
     }
     
     public void TakeDamage(float damageAmount){
