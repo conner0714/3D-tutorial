@@ -44,7 +44,7 @@ public class PlayerLife : MonoBehaviour
     void Die()
     {
         death.Play();
-        gameObject.GetComponent<MeshRenderer>().material.color = new Color(169, 169, 169);
+        gameObject.GetComponent<MeshRenderer>().material.color = new Color(169/256f, 169/256f, 169/256f);
         Invoke(nameof(ReloadLevel), 1.3f);
         dead = true;
         
@@ -53,7 +53,7 @@ public class PlayerLife : MonoBehaviour
      IEnumerator InvincibilityFrames() 
     {
         // your process
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         // continue process
         canGetHit = true;
     } 
