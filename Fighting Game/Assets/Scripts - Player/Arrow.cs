@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    [SerializeField]
-    private float damage;
+    public float damage = 40;
 
     [SerializeField]
     private float torque;

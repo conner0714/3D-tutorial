@@ -15,15 +15,16 @@ public class Forward : MonoBehaviour
     private int powerSelector;
     bool powerUpOn = true;
     private GameObject player;
-    PlayerLife playerDamage;
-    EnemyKill playerKillCount;
+    private PlayerLife playerDamage;
+    private EnemyKill playerKillCount;
     private int KillCount;
-    PlayerFollow warriorFollower;
+    private PlayerFollow warriorFollower;
     public Transform spawnPoint;
     public GameObject shieldWarriorPrefab;
     EnemyHealth enemyHP;
     private GameObject warriorHitbox;
     private string cloneCounter = "ShieldWarrior";
+    private GameObject sword;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,6 @@ public class Forward : MonoBehaviour
             cloneCounter = cloneCounter + "(Clone)";
         }
         currentWarrior = GameObject.Find(cloneCounter);
-        Debug.Log(currentWarrior);
         warriorFollower = currentWarrior.GetComponent<PlayerFollow>();
         mAnimator = currentWarrior.GetComponent<Animator>();
     }
@@ -122,10 +122,16 @@ public class Forward : MonoBehaviour
         powerSelector = Random.Range(1, 3);
         if (powerSelector == 1)
         {
+            /*
             playerDamage.damage = 100;
+            sword = GameObject.Find("RightSword");
+            sword.GetComponent<MeshRenderer>().material.color = new Color(0/256f, 113/256f, 13/256f);
             slash.Play();
+
             yield return new WaitForSeconds(5f);
+            sword.GetComponent<MeshRenderer>().material.color = new Color(255/256f, 255/256f, 255/256f);
             playerDamage.damage = 20;
+            */
         }
         if (powerSelector == 2)
         {
