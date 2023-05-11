@@ -104,7 +104,7 @@ public class Forward : MonoBehaviour
                 StartCoroutine("SwingDelay");
                 swing = false;
                 StartCoroutine("Reset");
-            }
+            } 
         }
         
     }
@@ -119,11 +119,12 @@ public class Forward : MonoBehaviour
     IEnumerator WarriorPowerUp()
     {
         powerUpOn = false;
-        powerSelector = Random.Range(1, 3);
+        powerSelector = Random.Range(2, 3);
         if (powerSelector == 1)
         {
-            /*
+            
             playerDamage.damage = 100;
+            /*
             sword = GameObject.Find("RightSword");
             sword.GetComponent<MeshRenderer>().material.color = new Color(0/256f, 113/256f, 13/256f);
             slash.Play();
@@ -140,7 +141,7 @@ public class Forward : MonoBehaviour
             yield return new WaitForSeconds(5f);
             mAnimator.SetTrigger("Attack");
         }
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1f);
         powerUpOn = true;
     }
 
