@@ -63,7 +63,7 @@ public class Weapon : MonoBehaviour
         
         currentArrowCollider.enabled = true;
         arrowScript.arrowFire = true;
-        Debug.Log(orientation.rotation.eulerAngles.x);
+        Debug.Log(orientation.rotation.eulerAngles.y);
        
         if(orientation.rotation.eulerAngles.x > 90f)
         yRotation = 360f - orientation.rotation.eulerAngles.x;
@@ -99,10 +99,8 @@ public class Weapon : MonoBehaviour
             zRotation = -(rotationTrack - 90f);
         }
 
-        Debug.Log(xRotation);
-        Debug.Log(zRotation);
         Debug.Log(yRotation);
-        fireRotation = new Vector3(1, 0.01f * yRotation, 0);
+        fireRotation = new Vector3(1, 100f * yRotation, 0);
         //fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();
