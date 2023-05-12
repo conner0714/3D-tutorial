@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
 
     private bool isReloading;
 
-    private float xRotation=90f;
+    //private float xRotation = 90f;
 
     private float yRotation;
 
@@ -63,13 +63,13 @@ public class Weapon : MonoBehaviour
         
         currentArrowCollider.enabled = true;
         arrowScript.arrowFire = true;
-        Debug.Log(orientation.rotation.eulerAngles.y);
+        Debug.Log(orientation.rotation.eulerAngles.x);
        
         if(orientation.rotation.eulerAngles.x > 90f)
         yRotation = 360f - orientation.rotation.eulerAngles.x;
         else
         yRotation = -orientation.rotation.eulerAngles.x;
-   
+        /*
         rotationTrack = orientation.rotation.eulerAngles.y;
         //Debug.Log(rotationTrack);
         
@@ -98,9 +98,11 @@ public class Weapon : MonoBehaviour
             xRotation = rotationTrack;
             zRotation = -(rotationTrack - 90f);
         }
+        */
+
 
         Debug.Log(yRotation);
-        fireRotation = new Vector3(1, 100f * yRotation, 0);
+        fireRotation = new Vector3(1, 0.02f * yRotation, 0);
         //fireRotation = new Vector3(0.01f * xRotation, 0.01f * yRotation, 0.01f * zRotation);
         var force = spawnPoint.TransformDirection(fireRotation * firePower);
         arrowShot.Play();

@@ -5048,12 +5048,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ece286a3ff60da438f0b86a4a872b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startYScale: 0
+  finish: {fileID: 0}
   moveSpeed: 4
+  walkSpeed: 4
+  sprintSpeed: 10
   groundDrag: 5
   jumpForce: 9
   jumpCooldown: 0.25
   airMultiplier: 0.2
+  crouchSpeed: 0
+  crouchYScale: 0
   jumpKey: 32
+  sprintKey: 304
+  crouchKey: 306
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -5064,6 +5072,7 @@ MonoBehaviour:
     m_Bits: 64
   jumpSound: {fileID: 1103047896}
   orientation: {fileID: 1943463861}
+  state: 0
 --- !u!54 &1103047903
 Rigidbody:
   m_ObjectHideFlags: 0

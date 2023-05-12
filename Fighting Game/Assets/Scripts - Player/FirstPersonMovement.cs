@@ -5,6 +5,7 @@ using UnityEngine;
 public class FirstPersonMovement : MonoBehaviour
 {
     public float startYScale;
+    public GameObject finish;
     [Header("Movement")]
     public float moveSpeed;
     public float walkSpeed;
@@ -57,6 +58,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        finish = GameObject.Find("Finish");
 
         startYScale = transform.localScale.y;
     }

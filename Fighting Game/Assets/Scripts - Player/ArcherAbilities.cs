@@ -48,7 +48,7 @@ public class ArcherAbilities : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q) && speedCooldown)
         {
-            StartCoroutine("SpeedBoost");  
+            StartCoroutine("JumpBoost");  
         }
 
         if(Input.GetKeyDown(KeyCode.E) && bowCooldown)
@@ -62,14 +62,14 @@ public class ArcherAbilities : MonoBehaviour
         }
     }
 
-    IEnumerator SpeedBoost()
+    IEnumerator JumpBoost()
     {
-        firstPersonMovement.moveSpeed = 6f;
+        firstPersonMovement.jumpForce = 11f;
         speedCooldown = false;
         speedUpTimer.UseSpell();
         speedSound.Play();
         yield return new WaitForSeconds(4f);
-        firstPersonMovement.moveSpeed = 4f;
+        firstPersonMovement.jumpForce = 9f;
         yield return new WaitForSeconds(9f);
         speedCooldown = true;
     }
