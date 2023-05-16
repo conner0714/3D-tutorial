@@ -11,8 +11,8 @@ public class AIController : MonoBehaviour
     public float speedWalk = 6; 
     public float speedRun = 9;
 
-    public float viewRadius = 15;
-    public float viewAngle = 90;
+    public float viewRadius = 100;
+    public float viewAngle = 270;
     public LayerMask playerMask;
     public LayerMask obstacleMask;
     public float meshResolution = 1f;
